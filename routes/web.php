@@ -8,6 +8,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PartnerController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/event/{id}', [EventController::class, 'show'])->name('event.show');
@@ -27,5 +28,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
     Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::get('/partners', [PartnerController::class, 'index'])->name('partners.index');
+    Route::get('/partners/create', [PartnerController::class, 'create'])->name('partners.create');
+    Route::post('/partners', [PartnerController::class, 'store'])->name('partners.store');
+    Route::get('/partners/{id}/edit', [PartnerController::class, 'edit'])->name('partners.edit');
+    Route::put('/partners/{id}', [PartnerController::class, 'update'])->name('partners.update');
+    Route::delete('/partners/{id}', [PartnerController::class, 'destroy'])->name('partners.destroy');
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
 });
