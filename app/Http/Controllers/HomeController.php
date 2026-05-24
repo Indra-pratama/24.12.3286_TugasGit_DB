@@ -19,9 +19,8 @@ class HomeController extends Controller
 
         //2. Buat kueri dasar untuk mengambil event:
         // - Gunakan Eager loading `category`
-        // - Hanya tampilkan kegiatan dengan jadwal yang belum kedaluwarsa (>= hari ini)
+        // - Tampilkan seluruh event yang tersimpan, agar data admin tetap terlihat di halaman utama
         $query = Event::with('category')
-                    ->where('date', '>=', now())
                     ->orderBy('date', 'asc');
 
         // 3. Filter query jika url memiliki parameter pencarian spesifik ?category=...
